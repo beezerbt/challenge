@@ -1,0 +1,23 @@
+Short Doco. as Requested
+
+1. I would figure out why Hibernate validator is not firing for the DTO using @Valid in the REST parameter.
+Since I could not figure it out, the service has a dependency on the Validator and vice versa which Intellij
+tells me is an anti-pattern.
+2. I would use POSTMAN to simulate a series of concurrent calls to the transfer
+endpoint, to validate the ACID properties of the transfer service, and to gauge performance.
+I was going to write a bunch of tests for that but to be honest there is no way enough time for that.
+Also, POSTMAN or JMeter would do a far better job.
+I could be argued that this is CRITICAL to the application working properly...i.e. is the crux of it,
+but without a proper harness it is not really worth trying to write a buggy test harness in the short time allotted.
+3. I would make sure that logging was for debug purposes and error conditions and warnings was
+liberally sprinkled in the critical path areas of the codebase.
+4. I would make sure the transfer endpoint responded with JSON nicely for ALL exceptions in
+the global handler...I tested one cas using Swagger...but that was all.
+5. Finally, regarding the last requirement:
+"Please focus on the application being "production-and-support-ready" for requirements already provided
+- not on extra features/functionality that could be added"
+I found this at odds with its predecessor paragraph in the README.pdf. However, what I would say is that I would
+make sure that sufficient metrics and diagnostics were available (even by leveraging Springboot diagnostics)
+in order to make sure the application is production ready.
+
+Thanks for this very awesome challenge; it was very well crafted.
